@@ -17,7 +17,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { useAuthStore, useChatStore } from '../store';
 import { chatService } from '../services/firebase';
-import axios from 'axios';
+import api from '../services/api';
 import toast from 'react-hot-toast';
 import { useLocation } from 'react-router-dom';
 
@@ -101,7 +101,7 @@ const Chat = () => {
 
     try {
       // Send to backend API
-      const response = await axios.post('/api/chat', {
+      const response = await api.post('/chat', {
         message: input.trim(),
         conversationId: currentConversationId
       });
